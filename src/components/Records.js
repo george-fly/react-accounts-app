@@ -116,9 +116,9 @@ class Records extends Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <h2>Records</h2>
-        <div className="row">
+        <div className="row mb-3">
           <AmountBox type='success' text='Credit' amount={this.credits()} />
           <AmountBox type='danger' text='Debit' amount={this.debits()} />
           <AmountBox type='info' text='Balance' amount={this.balance()} />

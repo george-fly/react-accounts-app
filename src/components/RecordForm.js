@@ -47,15 +47,15 @@ export default class RecordForm extends Component {
 
   render() {
     return (
-      <form className="form-inline" onSubmit={ (event) => {this.handleSubmit(event)} }>
+      <form className="form-inline mb-3" onSubmit={ (event) => {this.handleSubmit(event)} }>
         <div className="form-group">
-          <input type="text" className="form-control" onChange={this.handleChange.bind(this)} placeholder="Date" name="date" value={this.state.date} />
+          <input type="text" className="form-control mr-1" onChange={this.handleChange.bind(this)} placeholder="Date" name="date" value={this.state.date} />
         </div>
         <div className="form-group">
-          <input type="text" className="form-control" onChange={this.handleChange.bind(this)} placeholder="Title" name="title" value={this.state.title} />
+          <input type="text" className="form-control mr-1" onChange={this.handleChange.bind(this)} placeholder="Title" name="title" value={this.state.title} />
         </div>
         <div className="form-group">
-          <input type="text" className="form-control" onChange={this.handleChange.bind(this)}  placeholder="Amount" name="amount" value={this.state.amount} />
+          <input type="text" className="form-control mr-1" onChange={this.handleChange.bind(this)}  placeholder="Amount" name="amount" value={this.state.amount} />
         </div>
         <button type="submit" className="btn btn-primary" disabled={!this.valid()}>Create Record</button>
       </form>

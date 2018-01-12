@@ -57,7 +57,7 @@ export default class Record extends Component {
         <td>{this.props.record.title}</td>
         <td>{this.props.record.amount}</td>
         <td>
-          <button className="btn btn-info" onClick={(event) => {this.handleToggle(event)}}>Edit</button>
+          <button className="btn btn-info mr-1" onClick={(event) => {this.handleToggle(event)}}>Edit</button>
           <button className="btn btn-danger" onClick={ this.handleDelete.bind(this) }>Delete</button>
         </td>
       </tr>
@@ -71,7 +71,7 @@ export default class Record extends Component {
         <td><input type="text" className="form-control" defaultValue={this.props.record.title} ref='title' /></td>
         <td><input type="text" className="form-control" defaultValue={this.props.record.amount} ref='amount' /></td>
         <td>
-          <button className="btn btn-info" onClick={(event) => {this.handleEdit(event)}}>Update</button>
+          <button className="btn btn-info mr-1" onClick={(event) => {this.handleEdit(event)}}>Update</button>
           <button className="btn btn-danger" onClick={(event) => {this.handleToggle(event)}}>Cancel</button>
         </td>
       </tr>
