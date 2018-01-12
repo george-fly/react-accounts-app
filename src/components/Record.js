@@ -22,13 +22,26 @@ export default class Record extends Component {
     let record = {
       date: this.refs.date.value,
       title: this.refs.title.value,
-      amount: this.refs.amount.value
+      amount: Number.parseInt(this.refs.amount.value, 0)
     }
 
     RecordsAPI.update(this.props.record.id, record).then(
       response => {
         this.setState({edit: false});
         this.props.handleEditRecord(this.props.record, response.data);
+      }
+    ).catch(
+      error => {
+        console.log(error.message);
+      }
+    )
+  }
+
+  handleDelete(event) {
+    event.preventDefault();
+    RecordsAPI.remove(this.props.record.id).then(
+      () => {
+        this.props.handleDeleteRecord(this.props.record);
       }
     ).catch(
       error => {
@@ -45,7 +58,7 @@ export default class Record extends Component {
         <td>{this.props.record.amount}</td>
         <td>
           <button className="btn btn-info" onClick={(event) => {this.handleToggle(event)}}>Edit</button>
-          <button className="btn btn-danger">Delete</button>
+          <button className="btn btn-danger" onClick={ this.handleDelete.bind(this) }>Delete</button>
         </td>
       </tr>
     );
@@ -75,8 +88,5 @@ export default class Record extends Component {
 }
 
 Record.propTypes = {
-  id: PropTypes.string,
-  date: PropTypes.string,
-  title: PropTypes.string,
-  amount: PropTypes.number
+  record: PropTypes.object,
 }

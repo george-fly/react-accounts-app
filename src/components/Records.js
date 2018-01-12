@@ -39,8 +39,8 @@ class Records extends Component {
   }
 
   updateRecord(record, data) {
-    let recordIndex = this.state.records.indexOf(record);
-    let new_records = this.state.records.map( (item, index) => {
+    const recordIndex = this.state.records.indexOf(record);
+    const newRecords = this.state.records.map( (item, index) => {
         if(index !== recordIndex) {
             // This isn't the item we care about - keep it as-is
             return item;
@@ -53,8 +53,15 @@ class Records extends Component {
         };
     });
     this.setState({
-      records: new_records
+      records: newRecords
     });
+  }
+
+  deleteRecord(record) {
+    const index = this.state.records.indexOf(record);
+    let newRecords = this.state.records.slice();
+    newRecords.splice(index, 1);
+    this.setState({records: newRecords});
   }
 
   render() {
@@ -77,7 +84,7 @@ class Records extends Component {
             </tr>
           </thead>
           <tbody>
-            {records.map((record) => <Record key={record.id} record={record} handleEditRecord={ this.updateRecord.bind(this) } />)}
+            {records.map((record) => <Record key={record.id} record={record} handleEditRecord={this.updateRecord.bind(this)} handleDeleteRecord={(record) => {this.deleteRecord(record)}} />)}
           </tbody>
         </table>
       );
@@ -86,7 +93,7 @@ class Records extends Component {
     return (
       <div>
         <h2>Records</h2>
-        <RecordForm handleNewRecord={ (record) => {this.addRecord(record)} } />
+        <RecordForm handleNewRecord={(record) => {this.addRecord(record)}}  />
         {recordsComponent}
       </div>
     );
