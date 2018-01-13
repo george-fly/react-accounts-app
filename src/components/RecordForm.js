@@ -38,10 +38,7 @@ export default class RecordForm extends Component {
         })
       }
     ).catch(
-      error => this.setState({
-        isLoaded: true,
-        error
-      })
+      error => console.log(error.message)
     )
   }
 

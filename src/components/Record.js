@@ -79,11 +79,11 @@ export default class Record extends Component {
   }
 
   render() {
-      if (this.state.edit) {
-        return this.recordForm();
-      } else {
-        return this.recordRow();
-      }
+    if (this.state.edit) {
+      return this.recordForm();
+    } else {
+      return this.recordRow();
+    }
   }
 }
 
